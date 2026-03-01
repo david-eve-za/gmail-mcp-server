@@ -1,0 +1,46 @@
+<evaluation>
+  <qa_pair>
+    <question>Find all messages in the INBOX folder and identify which one has the most recent date. What is the message ID of the most recent message?</question>
+    <answer>The message ID varies based on your Gmail account</answer>
+  </qa_pair>
+
+  <qa_pair>
+    <question>Count how many messages are in the SENT folder. Return the total number.</question>
+    <answer>The total number varies based on your Gmail account</answer>
+  </qa_pair>
+
+  <qa_pair>
+    <question>Search for messages from yourself. How many messages did you find?</question>
+    <answer>The total number varies based on your Gmail account</answer>
+  </qa_pair>
+
+  <qa_pair>
+    <question>List all system labels in Gmail. How many system labels are there?</question>
+    <answer>6</answer>
+  </qa_pair>
+
+  <qa_pair>
+    <question>What is the label ID for the INBOX system label?</question>
+    <answer>INBOX</answer>
+  </qa_pair>
+
+  <qa_pair>
+    <question>Search for messages with the word "meeting" in the subject. Return the message ID of the first result.</question>
+    <answer>The message ID varies based on your Gmail account</answer>
+  </qa_pair>
+
+  <qa_pair>
+    <question>List all user-created labels (labels with type "user"). How many are there?</question>
+    <answer>The number varies based on your Gmail account</answer>
+  </qa_pair>
+
+  <qa_pair>
+    <question>Get details of the FIRST message in the TRASH folder. What is the snippet of that message?</question>
+    <answer>The snippet varies based on your Gmail account</answer>
+  </qa_pair>
+
+  <qa_pair>
+    <question>How many messages are in the DRAFT folder at most? (Hint: use maxResults parameter)</question>
+    <answer>The actual count varies, but maxResults limits to 20 by default</answer>
+  </qa_pair>
+</evaluation>
