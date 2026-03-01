@@ -18,6 +18,13 @@
   ],
   "author": "",
   "license": "MIT",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE",
+    "docs/**/*"
+  ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
     "dotenv": "^17.3.1",

@@ -1,0 +1,34 @@
+# Source files
+src/
+tests/
+
+# Configuration
+tsconfig.json
+jest.config.js
+
+# Development files
+.env.example
+.gitignore
+
+# Build artifacts (keep dist)
+!dist/
+
+# Documentation (keep docs and README)
+!README.md
+!docs/
+
+# Evaluation (optional)
+eval/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Worktrees
+.worktrees/
