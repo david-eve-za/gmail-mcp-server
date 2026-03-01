@@ -56,3 +56,5 @@ export const gmail_list_messages = {
     }
   },
 };
+
+export const listMessages = gmail_list_messages;

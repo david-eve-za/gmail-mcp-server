@@ -51,3 +51,5 @@ export const gmail_get_label = {
     }
   },
 };
+
+export const getLabel = gmail_get_label;

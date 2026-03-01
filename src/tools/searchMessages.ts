@@ -57,3 +57,5 @@ export const gmail_search_messages = {
     }
   },
 };
+
+export const searchMessages = gmail_search_messages;

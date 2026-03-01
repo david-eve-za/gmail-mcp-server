@@ -31,3 +31,5 @@ export const gmail_list_labels = {
     }
   },
 };
+
+export const listLabels = gmail_list_labels;

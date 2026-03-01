@@ -56,3 +56,5 @@ export const gmail_get_message = {
     }
   },
 };
+
+export const getMessage = gmail_get_message;
