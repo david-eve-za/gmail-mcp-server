@@ -4,6 +4,7 @@ export interface GmailMessage {
   snippet?: string;
   payload?: GmailMessagePayload;
   internalDate?: string;
+  labelIds?: string[];
 }
 
 export interface GmailMessagePayload {
