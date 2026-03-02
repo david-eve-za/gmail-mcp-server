@@ -115,6 +115,59 @@ npm test
 npm run build
 ```
 
+## CI/CD
+
+This project uses GitHub Actions for continuous integration and automatic npm publishing.
+
+### How it works
+
+1. **CI Workflow** (`.github/workflows/ci.yml`):
+   - Runs on every push and pull request to `main`
+   - Tests on Node.js 18 and 20
+   - Runs all tests and TypeScript compilation
+
+2. **Publish Workflow** (`.github/workflows/publish.yml`):
+   - Runs on push to `main` branch
+   - Checks if version in `package.json` is newer than npm registry
+   - If version changed:
+     - Runs tests and build
+     - Publishes to npm
+     - Creates a GitHub release
+
+### Setting up npm publishing
+
+To enable automatic npm publishing:
+
+1. Go to your GitHub repository **Settings → Secrets and variables → Actions**
+2. Click **New repository secret**
+3. Add a secret named `NPM_TOKEN`
+4. Use your npm authentication token as the value
+
+**To create an npm token:**
+1. Go to [npmjs.com → Access Tokens](https://www.npmjs.com/settings/tokens)
+2. Click "Generate New Token" → "Automation"
+3. Copy the generated token
+4. Add it as `NPM_TOKEN` in GitHub Actions secrets
+
+### Releasing a new version
+
+1. Update the version in `package.json`:
+   ```bash
+   npm version major  # or minor or patch
+   ```
+
+2. Commit and push to `main`:
+   ```bash
+   git commit -am "chore: bump version to X.Y.Z"
+   git push origin main
+   ```
+
+3. GitHub Actions will automatically:
+   - Run tests
+   - Build the project
+   - Publish to npm
+   - Create a GitHub release
+
 ## Security
 
 - Tokens are stored locally in `~/.gmail-mcp/tokens.json`
