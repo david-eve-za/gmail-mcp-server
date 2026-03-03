@@ -42,8 +42,9 @@ Create a `.env` file:
 ```env
 GMAIL_CLIENT_ID=your_client_id.apps.googleusercontent.com
 GMAIL_CLIENT_SECRET=your_client_secret
-GMAIL_REDIRECT_URI=http://localhost:8080/oauth2callback
 ```
+
+**Note**: The redirect URI is automatically generated using the first available port (default: 8080). You can optionally set `GMAIL_REDIRECT_URI` if you need a specific port.
 
 ### 4. Build the Project
 
@@ -101,6 +102,156 @@ Get details of a specific label.
 
 Parameters:
 - `labelId` (required): Label ID
+
+## Configuration with MCP Clients
+
+### Claude Desktop / Cline / OpenAI
+
+1. Create or edit the config file:
+   - **macOS/Linux**: `~/.config/claude/claude_desktop_config.json`
+   - **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+2. Add the Gmail MCP server configuration:
+
+```json
+{
+  "mcpServers": {
+    "gmail": {
+      "command": "node",
+      "args": [
+        "/absolute/path/to/gmail-mcp/build/index.js"
+      ],
+      "env": {
+        "GMAIL_CLIENT_ID": "your_client_id.apps.googleusercontent.com",
+        "GMAIL_CLIENT_SECRET": "your_client_secret"
+      }
+    }
+  }
+}
+```
+
+**Note**: The redirect URI is automatically generated. You can optionally set `GMAIL_REDIRECT_URI` if you need a specific port.
+
+### Gemini CLI / gemini-cli
+
+1. Locate or create the Gemini configuration file:
+   - **macOS/Linux**: `~/.config/gemini/config.json`
+   - **Windows**: `%APPDATA%\gemini\config.json`
+
+2. Add the MCP server configuration:
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "gmail": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/gmail-mcp/build/index.js"
+        ],
+        "env": {
+          "GMAIL_CLIENT_ID": "your_client_id.apps.googleusercontent.com",
+          "GMAIL_CLIENT_SECRET": "your_client_secret"
+        }
+      }
+    }
+  }
+}
+```
+
+3. Restart Gemini CLI
+
+### openencode
+
+1. Locate or create the opencode configuration file:
+   - **macOS/Linux**: `~/.config/opencode/mcp.json`
+   - **Windows**: `%APPDATA%\opencode\mcp.json`
+
+2. Add the MCP server configuration:
+
+```json
+{
+  "mcpServers": {
+    "gmail": {
+      "command": "node",
+      "args": [
+        "/absolute/path/to/gmail-mcp/build/index.js"
+      ],
+      "env": {
+        "GMAIL_CLIENT_ID": "your_client_id.apps.googleusercontent.com",
+        "GMAIL_CLIENT_SECRET": "your_client_secret"
+      }
+    }
+  }
+}
+```
+
+3. Restart the opencode application
+
+### Using npx (Recommended)
+
+You can use npx directly without installing:
+
+```bash
+npx -y gmail-mcp-service
+```
+
+In your MCP client configuration:
+
+```json
+{
+  "mcpServers": {
+    "gmail": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "gmail-mcp-service"
+      ],
+      "env": {
+        "GMAIL_CLIENT_ID": "your_client_id.apps.googleusercontent.com",
+        "GMAIL_CLIENT_SECRET": "your_client_secret"
+      }
+    }
+  }
+}
+```
+
+### Using npm global installation
+
+If you prefer to install the package globally:
+
+```bash
+npm install -g @your-scope/gmail-mcp
+```
+
+Then in your MCP client configuration, use:
+
+```json
+{
+  "mcpServers": {
+    "gmail": {
+      "command": "npx",
+      "args": [
+        "@your-scope/gmail-mcp"
+      ],
+      "env": {
+        "GMAIL_CLIENT_ID": "your_client_id.apps.googleusercontent.com",
+        "GMAIL_CLIENT_SECRET": "your_client_secret"
+      }
+    }
+  }
+}
+```
+
+### First-time authorization
+
+When you first use the Gmail MCP server with any client:
+
+1. The server will check for existing tokens in `~/.gmail-mcp/tokens.json`
+2. If no tokens are found, it will open your browser for OAuth2 authorization
+3. Authorize the application to access your Gmail
+4. Tokens are stored locally for future use
+5. The server will then be available to your MCP client
 
 ## Development
 
